@@ -1,66 +1,14 @@
-import Image from "next/image";
-import styles from "./page.module.css";
-
-export default function Home() {
+const Home = () => {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.js file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <>
+      <div class="container-fluid p-5 ">
+        <div class="text-center">
+          <h1>Next auth project </h1>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam odio neque expedita veniam minima, praesentium vitae perspiciatis ad voluptatum quam placeat eligendi doloribus, provident minus repellat quo ab possimus quae sequi dicta rem. Consequatur atque enim dolorum vel ut. Illo neque corrupti tempore dignissimos odio alias sapiente esse eum sunt! Tempora, deserunt, veniam nam quod repellat debitis corporis dolore consequuntur ipsum eos inventore fugiat nulla suscipit aut explicabo voluptatibus similique voluptate culpa. Suscipit voluptas obcaecati labore, doloribus doloremque praesentium repellendus placeat vel voluptatum aliquam ducimus delectus! Dignissimos tempora cupiditate, facere, beatae eaque mollitia voluptatem deleniti ducimus libero reprehenderit assumenda fugit!</p>
         </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+      </div>
+    </>
   );
-}
+};
+
+export default Home;
