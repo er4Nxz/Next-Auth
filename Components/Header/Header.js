@@ -1,4 +1,12 @@
+"use client";
+
+import { usePathname, useRouter } from "next/navigation";
+
+
 const Header = () => {
+  const pathname = usePathname();
+  const router = useRouter()
+
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -18,31 +26,34 @@ const Header = () => {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarScroll">
-            <ul
-              className="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll"
-              
-            >
+            <ul className="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll">
               <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="/">
+                <a
+                  className={
+                    pathname === "/" ? "active nav-link " : " nav-link"
+                  }
+                  aria-current="page"
+                  href="/"
+                >
                   Home
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/auth/login">
-                  Link
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="/auth/login">
-                  Link
+                <a
+                  className={
+                    pathname === "/posts" ? " nav-link active" : " nav-link"
+                  }
+                  href="/posts"
+                >
+                  Posts
                 </a>
               </li>
             </ul>
             <form className="d-flex" role="navigation">
-              <button className="btn btn-outline-success mx-3" type="submit">
+              <button className="btn btn-outline-success mx-3" type="submit" onClick={()=>router.push("/auth/login")}>
                 Login
               </button>
-              <button className="btn btn-outline-danger" type="submit">
+              <button className="btn btn-outline-danger" type="submit" onClick={()=>router.push("/auth/register")}>
                 Register
               </button>
             </form>
