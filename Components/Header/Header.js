@@ -1,17 +1,17 @@
 "use client";
 
-import { usePathname, useRouter } from "next/navigation";
+import Link from "next/link";
+import { usePathname} from "next/navigation";
 
 
 const Header = () => {
   const pathname = usePathname();
-  const router = useRouter()
 
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
-          <h4 className="navbar-brand" href="#">
+          <h4 className="navbar-brand">
             Auth-Next
           </h4>
           <button
@@ -28,7 +28,7 @@ const Header = () => {
           <div className="collapse navbar-collapse" id="navbarScroll">
             <ul className="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll">
               <li className="nav-item">
-                <a
+                <Link
                   className={
                     pathname === "/" ? "active nav-link " : " nav-link"
                   }
@@ -36,26 +36,26 @@ const Header = () => {
                   href="/"
                 >
                   Home
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a
+                <Link
                   className={
                     pathname === "/posts" ? " nav-link active" : " nav-link"
                   }
                   href="/posts"
                 >
                   Posts
-                </a>
+                </Link>
               </li>
             </ul>
             <form className="d-flex" role="navigation">
-              <button className="btn btn-outline-success mx-3" type="submit" onClick={()=>router.push("/auth/login")}>
+              <Link href={"/login"} className="btn btn-outline-success mx-3" type="submit">
                 Login
-              </button>
-              <button className="btn btn-outline-danger" type="submit" onClick={()=>router.push("/auth/register")}>
+              </Link>
+              <Link className="btn btn-outline-danger" type="submit" href={"/register"}>
                 Register
-              </button>
+              </Link>
             </form>
           </div>
         </div>
