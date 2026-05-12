@@ -1,5 +1,10 @@
 "use server";
 const registerAction = async (_, formData) => {
+  await new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("ok");
+    }, 1000);
+  });
   const name = formData.get("username");
   const email = formData.get("email");
   const password = formData.get("password");
@@ -17,7 +22,7 @@ const registerAction = async (_, formData) => {
     };
   }
 
-  console.log(formData);
+
 };
 
 export default registerAction;

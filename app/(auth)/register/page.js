@@ -1,9 +1,17 @@
-"use client"
+"use client";
 import registerAction from "@/action/register/register";
-import { useActionState } from "react";
+import SubmitBtn from "@/Components/SubmitBtn/SubmitBtn";
+import { useActionState, useEffect } from "react";
+import { toast } from "react-toastify";
 
 const register = () => {
   const [state, formHandle] = useActionState(registerAction, {});
+  useEffect(() => {
+    if (state?.error) {
+      toast.error(state?.error);
+    }
+  }, [state]);
+
   return (
     <>
       <div className="container mt-5">
@@ -24,7 +32,6 @@ const register = () => {
                       className="form-control"
                       id="username"
                       placeholder="Enter your username"
-                      required
                     />
                   </div>
 
@@ -38,7 +45,6 @@ const register = () => {
                       className="form-control"
                       id="email"
                       placeholder="Enter your email"
-                      required
                     />
                   </div>
 
@@ -52,7 +58,6 @@ const register = () => {
                       className="form-control"
                       id="password"
                       placeholder="Enter password"
-                      required
                     />
                   </div>
                   <div className="mb-3">
@@ -65,16 +70,10 @@ const register = () => {
                       className="form-control"
                       id="confirmPassword"
                       placeholder="Confirm password"
-                      required
                     />
                   </div>
-                  <div>
-                    <p className="text-danger">{state?.error}</p>
-                  </div>
                   <div className="d-grid">
-                    <button type="submit" className="btn btn-primary">
-                      Submit
-                    </button>
+                    <SubmitBtn />
                   </div>
                 </form>
               </div>
