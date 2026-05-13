@@ -1,28 +1,37 @@
 "use server";
 const registerAction = async (_, formData) => {
-  await new Promise((resolve) => {
-    setTimeout(() => {
-      resolve("ok");
-    }, 1000);
-  });
-  const name = formData.get("username");
+  const username = formData.get("username");
   const email = formData.get("email");
   const password = formData.get("password");
-  const confrimPassword = formData.get("confirmPassword");
+  const c_password = formData.get("confirmPassword");
 
-  if (name === "" || email === "" || password === "") {
+  const response = await fetch("http://localhost:8000/api/register", {
+    cache: "no-store",
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      name: username,
+      email,
+      password,
+      c_password,
+    }),
+  });
+
+  const data = await response.json();
+  console.log(data);
+  
+
+  if (data.ok) {
     return {
-      error: "name, email and password is required",
+      succes: "you are registered",
+    };
+  } else {
+    return {
+      error: data,
     };
   }
-
-  if (password !== confrimPassword) {
-    return {
-      error: "password do not match!",
-    };
-  }
-
-
 };
 
 export default registerAction;

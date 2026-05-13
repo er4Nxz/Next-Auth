@@ -6,9 +6,18 @@ import { toast } from "react-toastify";
 
 const register = () => {
   const [state, formHandle] = useActionState(registerAction, {});
+
   useEffect(() => {
-    if (state?.error) {
-      toast.error(state?.error);
+    const errors = state?.error;
+    const succes = state?.succes;
+    if (errors) {
+      Object.keys(errors).map((error) => {
+        errors[error].map((message) => {
+          toast.error(message);
+        });
+      });
+    } else if (succes) {
+      console.log(succes);
     }
   }, [state]);
 

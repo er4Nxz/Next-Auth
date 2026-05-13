@@ -7,7 +7,7 @@ const SubmitBtn = () => {
       <button type="submit" className="btn btn-primary" disabled={pending}>
         submit
         {pending && (
-          <div className="spinner-border spinner-border-xs mx-2"></div>
+          <div className="spinner-border spinner-border-sm mx-2"></div>
         )}
       </button>
     </>
