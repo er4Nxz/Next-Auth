@@ -1,23 +1,25 @@
 "use client";
 import registerAction from "@/action/register/register";
 import SubmitBtn from "@/Components/SubmitBtn/SubmitBtn";
+import { useRouter } from "next/navigation";
 import { useActionState, useEffect } from "react";
 import { toast } from "react-toastify";
 
 const register = () => {
   const [state, formHandle] = useActionState(registerAction, {});
-
+  const router = useRouter();
   useEffect(() => {
     const errors = state?.error;
-    const succes = state?.succes;
+    const success = state?.success;
     if (errors) {
       Object.keys(errors).map((error) => {
         errors[error].map((message) => {
           toast.error(message);
         });
       });
-    } else if (succes) {
-      console.log(succes);
+    } else if (success) {
+      toast.success(success);   
+      router.push("/");
     }
   }, [state]);
 

@@ -20,16 +20,14 @@ const registerAction = async (_, formData) => {
   });
 
   const data = await response.json();
-  console.log(data);
-  
 
-  if (data.ok) {
+  if (response.ok) {
     return {
-      succes: "you are registered",
+      success: "you are registered",
     };
   } else {
     return {
-      error: data,
+      error: data ,
     };
   }
 };
